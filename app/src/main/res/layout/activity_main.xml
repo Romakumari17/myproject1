@@ -24,9 +24,11 @@
     android:layout_marginTop="20dp"
      android:textColor="#191315"/>
     <EditText
+        android:id="@+id/etName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="example : ruma"/>
+        android:hint="example : ruma"
+        android:inputType="textPersonName"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,7 +38,10 @@
             android:gravity="left"/>
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:id="@+id/etCollege"
+        android:minLines="5"
+        android:inputType="textMultiLine|textCapSentences"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -45,10 +50,16 @@
         android:textColor="#e5584f"
         />
     <EditText
+        android:id="@+id/etNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
+        android:inputType="number"
+        android:digits="1234567890"
+        android:maxLength="10"
         android:hint="eg: 7685940302"/>
  <Button
+     android:id="@+id/btnvalidate"
      android:layout_width="match_parent"
      android:layout_height="wrap_content"
      android:text="Validate"
