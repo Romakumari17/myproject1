@@ -72,10 +72,15 @@ class MainActivity : AppCompatActivity() {
         // Update Button Click
         dialogBinding.btnUpdate.setOnClickListener {
             val updatedItem = dialogBinding.etInput.text.toString()
-            if (updatedItem.isNotEmpty()) {
-                itemList[position] = updatedItem
+            val selectedposition=dialogBinding.etposition.text.toString()
+
+            if (updatedItem.isNotEmpty() || selectedposition.isNullOrEmpty()){
+                itemList[selectedposition.toInt()] = updatedItem
                 adapter.notifyDataSetChanged()
-                Toast.makeText(this, "Item updated", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Item updated", Toast.LENGTH_SHORT).show()}
+                else if ( selectedposition >= itemList.size.toString()){
+                    Toast.makeText(this, "Invalid position", Toast.LENGTH_SHORT).show()
+
                 customDialog.dismiss()
             } else {
                 Toast.makeText(this, "Enter a valid item", Toast.LENGTH_SHORT).show()
@@ -84,7 +89,8 @@ class MainActivity : AppCompatActivity() {
 
         // Delete Button Click
         dialogBinding.btnDelete.setOnClickListener {
-            itemList.removeAt(position)
+            var selectedposition=dialogBinding.etposition.text.toString()
+            itemList.removeAt(selectedposition.toInt())
             adapter.notifyDataSetChanged()
             Toast.makeText(this, "Item deleted", Toast.LENGTH_SHORT).show()
             customDialog.dismiss()
